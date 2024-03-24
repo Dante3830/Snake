@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3 uid="uid://jqxb4ac43oww"]
+
+[ext_resource type="FontFile" uid="uid://c1e6fq3rtteqw" path="res://Assets/Retro Gaming.ttf" id="1_kioj1"]
+
+[node name="HUD" type="CanvasLayer"]
+
+[node name="ScorePanel" type="Panel" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -147.5
+offset_right = 147.5
+offset_bottom = 40.0
+grow_horizontal = 2
+size_flags_vertical = 0
+
+[node name="ScoreLabel" type="Label" parent="."]
+offset_left = 385.0
+offset_top = -3.0
+offset_right = 678.0
+offset_bottom = 43.0
+theme_override_colors/font_color = Color(1, 0.0352941, 0.0235294, 1)
+theme_override_fonts/font = ExtResource("1_kioj1")
+theme_override_font_sizes/font_size = 36
+text = "Score: 0"

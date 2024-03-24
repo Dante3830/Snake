@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://bqxoaiib4vd3k"]
+
+[ext_resource type="Script" path="res://Scenes/main.gd" id="1_wwbbj"]
+[ext_resource type="PackedScene" uid="uid://c6acewdvti8yx" path="res://Scenes/SnakeFragment.tscn" id="2_anpsn"]
+[ext_resource type="PackedScene" uid="uid://jqxb4ac43oww" path="res://Scenes/hud.tscn" id="3_pxg81"]
+[ext_resource type="Texture2D" uid="uid://c0k3swkb2h8vd" path="res://Assets/Apple.png" id="4_jlujw"]
+[ext_resource type="PackedScene" uid="uid://cfbwic3ev7gvp" path="res://Scenes/GameOverMenu.tscn" id="6_pux45"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mvll2"]
+bg_color = Color(0.647059, 0.819608, 0.733333, 1)
+
+[node name="Main" type="Node"]
+script = ExtResource("1_wwbbj")
+snake_scene = ExtResource("2_anpsn")
+
+[node name="Background" type="Panel" parent="."]
+offset_left = -58.0
+offset_top = -56.0
+offset_right = -23.0
+offset_bottom = -29.0
+scale = Vector2(32.4406, 42.8288)
+theme_override_styles/panel = SubResource("StyleBoxFlat_mvll2")
+
+[node name="HUD" parent="." instance=ExtResource("3_pxg81")]
+
+[node name="MoveTimer" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="Apple" type="Sprite2D" parent="."]
+position = Vector2(1.90735e-06, 0)
+scale = Vector2(0.0400001, 0.0330209)
+texture = ExtResource("4_jlujw")
+offset = Vector2(550, 690)
+
+[node name="GameOverMenu" parent="." instance=ExtResource("6_pux45")]
+process_mode = 2
+
+[connection signal="timeout" from="MoveTimer" to="." method="_on_move_timer_timeout"]
+[connection signal="restart" from="GameOverMenu" to="." method="_on_game_over_menu_restart"]
